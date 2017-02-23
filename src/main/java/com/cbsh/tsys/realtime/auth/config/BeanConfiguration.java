@@ -14,31 +14,39 @@ import com.amazonaws.internal.StaticCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.kinesis.AmazonKinesisClient;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
 
 @Configuration
 public class BeanConfiguration {
 	
-//	@Value("${aws.kinesis.url:}")
-//	private String kinesisUrl;
-//	@Value("${aws.kinesis.port:}")
-//	private Integer kinesisPort;
-	@Value("${aws.kinesis.region:}")
+	@Value("${aws.region:}")
 	private String kinesisRegion;
-	@Value("${aws.kinesis.accessKey:}")
+	@Value("${aws.accessKey:}")
 	private String kinesisAccessKey;
-	@Value("${aws.kinesis.secretKey:}")
+	@Value("${aws.secretKey:}")
 	private String kinesisSecretKey;
 	
+	
 	@Bean
-//	@Profile(value="kinesis")
-	public AmazonKinesisClient kinesisClient() {
+	public AWSCredentialsProvider credProvider() {
 		AWSCredentials creds = new BasicAWSCredentials(kinesisAccessKey, kinesisSecretKey);
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
-		ClientConfiguration clientConfiguration = new ClientConfiguration();
-//		clientConfiguration.
-//		clientConfiguration.setProxyHost(kinesisUrl);
-//		clientConfiguration.setProxyPort(kinesisPort);
-		Region region = Region.getRegion(Regions.fromName(kinesisRegion));
-		return region.createClient(AmazonKinesisClient.class, credProvider, clientConfiguration);
+		return credProvider;
+	}
+	
+	@Bean
+	public Region region(){
+		return Region.getRegion(Regions.fromName(kinesisRegion));
+	}
+	
+	@Bean
+	public AmazonKinesisClient kinesisClient() {
+		return region().createClient(AmazonKinesisClient.class, credProvider(), new ClientConfiguration());
+	}
+	
+	@Bean
+	public AmazonS3Client amazonS3Client() {
+		return region().createClient(AmazonS3Client.class, credProvider(), new ClientConfiguration());
 	}
 }
