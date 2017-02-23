@@ -15,7 +15,7 @@ import com.cbsh.aws.poc.config.S3ToKinesisEndpointConfiguration;
  * @author Klhaas
  */
 @Component
-public class TsysRealtimeAuthRoute extends RouteBuilder{
+public class S3ToKinesisRoute extends RouteBuilder{
 	
 	@Autowired
 	private S3ToKinesisEndpointConfiguration config;
