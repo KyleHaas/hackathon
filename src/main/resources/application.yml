@@ -9,10 +9,10 @@ camel:
         - 'log:hello'
         - 'aws-kinesis://census-stream?amazonKinesisClient=#kinesisClient'    
 aws:
-  kinesis:
-    region: 'us-east-1'
-    accessKey: AKIAJICVN77U3A5PNPSA
-    secretKey: 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
+  region: 'us-east-1'
+  accessKey: 
+  secretKey: 
+    
   
      
         

@@ -18,26 +18,18 @@ import com.amazonaws.services.kinesis.AmazonKinesisClient;
 @Configuration
 public class BeanConfiguration {
 	
-//	@Value("${aws.kinesis.url:}")
-//	private String kinesisUrl;
-//	@Value("${aws.kinesis.port:}")
-//	private Integer kinesisPort;
-	@Value("${aws.kinesis.region:}")
+	@Value("${aws.region:}")
 	private String kinesisRegion;
-	@Value("${aws.kinesis.accessKey:}")
+	@Value("${aws.accessKey:}")
 	private String kinesisAccessKey;
-	@Value("${aws.kinesis.secretKey:}")
+	@Value("${aws.secretKey:}")
 	private String kinesisSecretKey;
 	
 	@Bean
-//	@Profile(value="kinesis")
 	public AmazonKinesisClient kinesisClient() {
 		AWSCredentials creds = new BasicAWSCredentials(kinesisAccessKey, kinesisSecretKey);
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
 		ClientConfiguration clientConfiguration = new ClientConfiguration();
-//		clientConfiguration.
-//		clientConfiguration.setProxyHost(kinesisUrl);
-//		clientConfiguration.setProxyPort(kinesisPort);
 		Region region = Region.getRegion(Regions.fromName(kinesisRegion));
 		return region.createClient(AmazonKinesisClient.class, credProvider, clientConfiguration);
 	}
