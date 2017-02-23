@@ -1,5 +1,6 @@
 package com.cbsh.tsys.realtime.auth.config;
 
+import org.apache.camel.component.aws.kinesis.KinesisProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +18,10 @@ import com.amazonaws.services.kinesis.AmazonKinesisClient;
 @Configuration
 public class BeanConfiguration {
 	
-	@Value("${aws.kinesis.url:}")
-	private String kinesisUrl;
-	@Value("${aws.kinesis.port:}")
-	private Integer kinesisPort;
+//	@Value("${aws.kinesis.url:}")
+//	private String kinesisUrl;
+//	@Value("${aws.kinesis.port:}")
+//	private Integer kinesisPort;
 	@Value("${aws.kinesis.region:}")
 	private String kinesisRegion;
 	@Value("${aws.kinesis.accessKey:}")
@@ -29,15 +30,15 @@ public class BeanConfiguration {
 	private String kinesisSecretKey;
 	
 	@Bean
-	@Profile(value="kinesis")
+//	@Profile(value="kinesis")
 	public AmazonKinesisClient kinesisClient() {
 		AWSCredentials creds = new BasicAWSCredentials(kinesisAccessKey, kinesisSecretKey);
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
 		ClientConfiguration clientConfiguration = new ClientConfiguration();
-		clientConfiguration.setProxyHost(kinesisUrl);
-		clientConfiguration.setProxyPort(kinesisPort);
+//		clientConfiguration.
+//		clientConfiguration.setProxyHost(kinesisUrl);
+//		clientConfiguration.setProxyPort(kinesisPort);
 		Region region = Region.getRegion(Regions.fromName(kinesisRegion));
 		return region.createClient(AmazonKinesisClient.class, credProvider, clientConfiguration);
 	}
-
 }

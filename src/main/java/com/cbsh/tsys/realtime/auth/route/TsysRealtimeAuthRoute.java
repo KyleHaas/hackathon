@@ -1,6 +1,7 @@
 package com.cbsh.tsys.realtime.auth.route;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.aws.kinesis.KinesisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,9 @@ public class TsysRealtimeAuthRoute extends RouteBuilder{
 	@Override
 	public void configure() throws Exception {
 		from(config.getFrom())
+			.transform()
+			.simple("Test")
+			.setHeader(KinesisConstants.PARTITION_KEY, simple("partition"))
 	//		.unmarshal("")
 	//		.log("hello")
 			.multicast()

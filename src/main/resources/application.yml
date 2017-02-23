@@ -3,27 +3,16 @@ camel:
     main-run-controller: true
   routes:
     realtime-auth:
-      from: 'timer://foo?fixedRate=true&period=60000'
+      from: 'timer://foo?fixedRate=true&period=30000'
       parallel: false
       to:
         - 'log:hello'
-        - 'log:world'
----
-spring:
-  profiles: kinesis
+        - 'aws-kinesis://census-stream?amazonKinesisClient=#kinesisClient'    
 aws:
   kinesis:
-    url: http://blah.com
-    port: 8080
-    region: US East
-    accessKey: blah
-    secretKey: blah
-camel:
-  routes:
-    realtime-auth:
-      from: 'timer://foo?fixedRate=true&period=30000'
-      to:
-        - 'log:hello'
-        - 'log:world'    
+    region: 'us-east-1'
+    accessKey: AKIAJICVN77U3A5PNPSA
+    secretKey: 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
+  
      
         
