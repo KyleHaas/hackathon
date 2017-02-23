@@ -14,7 +14,6 @@ import com.amazonaws.internal.StaticCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.kinesis.AmazonKinesisClient;
-import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 
 @Configuration
@@ -34,7 +33,6 @@ public class BeanConfiguration {
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
 		return credProvider;
 	}
-	
 	@Bean
 	public Region region(){
 		return Region.getRegion(Regions.fromName(kinesisRegion));
