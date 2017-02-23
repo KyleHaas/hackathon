@@ -23,8 +23,9 @@ public class TsysRealtimeAuthRoute extends RouteBuilder{
 	@Override
 	public void configure() throws Exception {
 		from(config.getFrom())
-			.transform()
-			.simple("Test")
+            .convertBodyTo(String.class)
+            .split()
+            .tokenize("\\r\\n|\\n")
 			.setHeader(KinesisConstants.PARTITION_KEY, simple("partition"))
 	//		.unmarshal("")
 	//		.log("hello")
