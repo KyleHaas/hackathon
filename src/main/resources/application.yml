@@ -16,6 +16,8 @@ camel:
         - 'log: message consumed'
 aws:
   region: 'us-east-1'
+  accessKey: ENC(TJAd0zFW7BKDBGrwi+6aaFlLrOfM4zosUwYqxmYDDks=)
+  secretKey: ENC(HelBEdxJZC/5m6BP8B6W5wB5m1X91iqrPaf0gO1Guxer0h6gL8ZTsDGaAvv9eDJyg4C01sCCnaQ=)
 
 
 
