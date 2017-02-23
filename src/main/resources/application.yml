@@ -3,23 +3,21 @@ camel:
     main-run-controller: true
   routes:
     realtime-auth:
-      from: 'timer://foo?fixedRate=true&period=30000'
+      from: 'aws-s3://census-toy?amazonS3Client=#amazonS3Client&delay=5000&maxMessagesPerPoll=1&deleteAfterRead=false&prefix=kinesis-test'
       parallel: false
       to:
         - 'log:hello'
-        - 'aws-kinesis://census-stream?amazonKinesisClient=#kinesisClient'    
+        - 'aws-kinesis://census-stream?amazonKinesisClient=#kinesisClient'
+    kinesis-consumer:
+      from: 'aws-kinesis://census-stream?amazonKinesisClient=#kinesisClient'
+      parallel: false
+      to:
+#       - 'log:${body}'
+        - 'log: message consumed'
 aws:
-<<<<<<< HEAD
-  kinesis:
-    region: 'us-east-1'
-    accessKey:
-    secretKey:
-=======
   region: 'us-east-1'
-  accessKey: 
-  secretKey: 
-    
->>>>>>> master
-  
+
+
+
      
         
