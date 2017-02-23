@@ -3,7 +3,7 @@ camel:
     main-run-controller: true
   routes:
     s3-to-kinesis:
-      from: 'aws-s3://census-toy?amazonS3Client=#amazonS3Client&delay=5000&maxMessagesPerPoll=1&deleteAfterRead=false&prefix=kinesis-test'
+      from: 'aws-s3://census-toy?amazonS3Client=#amazonS3Client&delay=50000&maxMessagesPerPoll=1&deleteAfterRead=false&prefix=kinesis-test'
       parallel: false
       to:
         - 'log:hello'
