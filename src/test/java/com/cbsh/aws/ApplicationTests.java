@@ -1,4 +1,4 @@
-package com.cbsh.tsys.realtime.auth;
+package com.cbsh.aws;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

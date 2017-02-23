@@ -1,4 +1,4 @@
-package com.cbsh.aws.poc.config;
+package com.cbsh.aws.config;
 
 import java.util.List;
 

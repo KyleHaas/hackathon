@@ -1,4 +1,4 @@
-package com.cbsh.aws.poc.model;
+package com.cbsh.aws.model;
 
 public class TsysMessage {
 	

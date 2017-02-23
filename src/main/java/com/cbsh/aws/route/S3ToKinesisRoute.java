@@ -1,11 +1,11 @@
-package com.cbsh.aws.poc.route;
+package com.cbsh.aws.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.aws.kinesis.KinesisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cbsh.aws.poc.config.S3ToKinesisEndpointConfiguration;
+import com.cbsh.aws.config.S3ToKinesisEndpointConfiguration;
 
 /**
  * Routebuilder class that pulls messages from ${camel.routes.realtime-auth.from}

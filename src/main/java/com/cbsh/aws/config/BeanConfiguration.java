@@ -1,4 +1,4 @@
-package com.cbsh.aws.poc.config;
+package com.cbsh.aws.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
