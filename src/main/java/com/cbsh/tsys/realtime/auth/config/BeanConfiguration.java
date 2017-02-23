@@ -15,6 +15,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.kinesis.AmazonKinesisClient;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
 
 @Configuration
 public class BeanConfiguration {
@@ -26,18 +27,26 @@ public class BeanConfiguration {
 	@Value("${aws.secretKey:}")
 	private String kinesisSecretKey;
 	
+	
 	@Bean
-	public AmazonKinesisClient kinesisClient() {
+	public AWSCredentialsProvider credProvider() {
 		AWSCredentials creds = new BasicAWSCredentials(kinesisAccessKey, kinesisSecretKey);
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
-		ClientConfiguration clientConfiguration = new ClientConfiguration();
-		Region region = Region.getRegion(Regions.fromName(kinesisRegion));
-		return region.createClient(AmazonKinesisClient.class, credProvider, clientConfiguration);
+		return credProvider;
 	}
 	
-	public AmazonS3 amazonS3Client() {
-//		AmazonS3 amazons3 = new AmazonS3();
-		return null;
-		
+	@Bean
+	public Region region(){
+		return Region.getRegion(Regions.fromName(kinesisRegion));
+	}
+	
+	@Bean
+	public AmazonKinesisClient kinesisClient() {
+		return region().createClient(AmazonKinesisClient.class, credProvider(), new ClientConfiguration());
+	}
+	
+	@Bean
+	public AmazonS3Client amazonS3Client() {
+		return region().createClient(AmazonS3Client.class, credProvider(), new ClientConfiguration());
 	}
 }
