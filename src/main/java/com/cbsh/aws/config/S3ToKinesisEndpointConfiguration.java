@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * Container class for the tsys.realtime.auth endpoint configs. Necessary 
+ * Container class for the s3-to-kinesis endpoint configs. Necessary 
  * since we can have one to many to endpoints.
  * 
  * @author Klhaas
