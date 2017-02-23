@@ -1,4 +1,4 @@
-package com.cbsh.tsys.realtime.auth.config;
+package com.cbsh.aws.poc.config;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cbsh.tsys.realtime.auth.config;
+package com.cbsh.aws.poc.config;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  * @author Klhaas
  */
 @Component
-@ConfigurationProperties("camel.routes.realtime-auth")
-public class EndpointConfiguration {
+@ConfigurationProperties("camel.routes.s3-to-kinesis")
+public class S3ToKinesisEndpointConfiguration {
 	
 	/** Source of data to process. **/
 	private String from;

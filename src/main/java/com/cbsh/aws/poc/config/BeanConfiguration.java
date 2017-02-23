@@ -1,10 +1,8 @@
-package com.cbsh.tsys.realtime.auth.config;
+package com.cbsh.aws.poc.config;
 
-import org.apache.camel.component.aws.kinesis.KinesisProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;

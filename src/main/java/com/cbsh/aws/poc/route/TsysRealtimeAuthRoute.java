@@ -1,11 +1,11 @@
-package com.cbsh.tsys.realtime.auth.route;
+package com.cbsh.aws.poc.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.aws.kinesis.KinesisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cbsh.tsys.realtime.auth.config.EndpointConfiguration;
+import com.cbsh.aws.poc.config.S3ToKinesisEndpointConfiguration;
 
 /**
  * Routebuilder class that pulls messages from ${camel.routes.realtime-auth.from}
@@ -18,7 +18,7 @@ import com.cbsh.tsys.realtime.auth.config.EndpointConfiguration;
 public class TsysRealtimeAuthRoute extends RouteBuilder{
 	
 	@Autowired
-	private EndpointConfiguration config;
+	private S3ToKinesisEndpointConfiguration config;
 
 	@Override
 	public void configure() throws Exception {

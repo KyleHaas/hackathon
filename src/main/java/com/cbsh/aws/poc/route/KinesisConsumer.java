@@ -1,10 +1,11 @@
-package com.cbsh.tsys.realtime.auth.route;
+package com.cbsh.aws.poc.route;
 
-import com.cbsh.tsys.realtime.auth.config.KinesisConsumerConfig;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.aws.kinesis.KinesisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.cbsh.aws.poc.config.KinesisConsumerConfig;
 
 /**
  *

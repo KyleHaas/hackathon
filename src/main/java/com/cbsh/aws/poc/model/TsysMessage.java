@@ -1,4 +1,4 @@
-package com.cbsh.tsys.realtime.auth.model;
+package com.cbsh.aws.poc.model;
 
 public class TsysMessage {
 	
