@@ -9,19 +9,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FileToS3Route extends RouteBuilder {
-
 	@Override
 	public void configure() throws Exception {
-		from("file:///Users/Cassie/Downloads?fileName=census-income.test&scheduler=quartz2&scheduler.cron=0 0/2 * * * ?")
+		from("direct-vm:sendToS3")
 			.convertBodyTo(byte[].class)
-	    	.setHeader(S3Constants.CONTENT_LENGTH, simple("${in.header.CamelFileLength}"))
+			.log("sending toApi")
+//	    	.setHeader(S3Constants.CONTENT_LENGTH, simple("${body.length}"))
 	    	.setHeader(S3Constants.KEY, method(this, "getFileName"))
         	.multicast().parallelProcessing(true)
         		.to("aws-s3://census-toy?amazonS3Client=#amazonS3Client");
 	}
 	
 	public String getFileName(Exchange exchange) {
-		return "kinesis-test/" + new Date().getTime() + ".data";
+		return "kinesis-test/" + new Date().getTime() + ".txt";
 	}
 
 }
