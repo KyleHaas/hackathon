@@ -14,8 +14,6 @@ public class FileToS3Route extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		from("file:///Users/Cassie/Downloads?fileName=census-income.test")
-//        .convertBodyTo(String.class)
-//        .split().tokenize("\\r\\n|\\n")
 			.convertBodyTo(byte[].class)
 	    	.setHeader(S3Constants.CONTENT_LENGTH, simple("${in.header.CamelFileLength}"))
 	    	.setHeader(S3Constants.KEY,simple("kyle2-upload.txt"))
