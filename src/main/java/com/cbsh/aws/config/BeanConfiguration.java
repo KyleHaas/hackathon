@@ -18,22 +18,22 @@ import com.amazonaws.services.s3.AmazonS3Client;
 public class BeanConfiguration {
 	
 	@Value("${aws.region:}")
-	private String kinesisRegion;
+	private String awsRegion;
 	@Value("${aws.accessKey:}")
-	private String kinesisAccessKey;
+	private String awsAccessKey;
 	@Value("${aws.secretKey:}")
-	private String kinesisSecretKey;
+	private String awsSecretKey;
 	
 	
 	@Bean
 	public AWSCredentialsProvider credProvider() {
-		AWSCredentials creds = new BasicAWSCredentials(kinesisAccessKey, kinesisSecretKey);
+		AWSCredentials creds = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
 		AWSCredentialsProvider credProvider = new StaticCredentialsProvider(creds);
 		return credProvider;
 	}
 	@Bean
 	public Region region(){
-		return Region.getRegion(Regions.fromName(kinesisRegion));
+		return Region.getRegion(Regions.fromName(awsRegion));
 	}
 	
 	@Bean
