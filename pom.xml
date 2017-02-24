@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<camel.version>2.17.0</camel.version>
+		<camel.version>2.18.0</camel.version>
 	</properties>
 
 	<dependencies>
@@ -39,11 +39,16 @@
 		<dependency>
 		    <groupId>org.apache.camel</groupId>
 		    <artifactId>camel-spring-boot</artifactId>
-		    <version>${camel.version}</version> <!-- use the same version as your Camel core version -->
+		    <version>${camel.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.camel</groupId>
 		    <artifactId>camel-aws</artifactId>
+		    <version>${camel.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-quartz2</artifactId>
 		    <version>${camel.version}</version>
 		</dependency>
 		<dependency>
@@ -68,7 +73,7 @@
 			  <groupId>org.apache.camel</groupId>
 			  <artifactId>camel-maven-plugin</artifactId>
 			  <configuration>
-			    <mainClass>com.cbsh.tsys.realtime.auth.Application</mainClass>
+			    <mainClass>com.cbsh.aws.Application</mainClass>
 			  </configuration>
 			</plugin>
 		</plugins>

@@ -14,7 +14,7 @@ import com.cbsh.aws.config.S3ToKinesisEndpointConfiguration;
  * 
  * @author Klhaas
  */
-@Component
+//@Component
 public class S3ToKinesisRoute extends RouteBuilder{
 	
 	@Autowired
