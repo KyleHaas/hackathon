@@ -17,16 +17,11 @@ public class FileToS3Route extends RouteBuilder {
 	    	.setHeader(S3Constants.CONTENT_LENGTH, simple("${in.header.CamelFileLength}"))
 	    	.setHeader(S3Constants.KEY, method(this, "getFileName"))
         	.multicast().parallelProcessing(true)
-        		.to("aws-s3://census-toy?amazonS3Client=#amazonS3Client&prefix=kinesis-test");
-		
-	}
-	
-	public String getS3Destination(Exchange exchange) {
-		return "kinesis-test";
+        		.to("aws-s3://census-toy?amazonS3Client=#amazonS3Client");
 	}
 	
 	public String getFileName(Exchange exchange) {
-		return new Date().getTime() + ".txt";
+		return "kinesis-test/" + new Date().getTime() + ".data";
 	}
 
 }
