@@ -11,7 +11,7 @@ import com.cbsh.aws.config.KinesisConsumerConfig;
  *
  * @author Jhouston
  */
-@Component
+//@Component
 public class KinesisConsumer extends RouteBuilder{
 
     @Autowired
