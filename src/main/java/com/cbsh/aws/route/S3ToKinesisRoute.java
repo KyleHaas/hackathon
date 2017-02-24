@@ -3,7 +3,6 @@ package com.cbsh.aws.route;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.aws.kinesis.KinesisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.cbsh.aws.config.S3ToKinesisEndpointConfiguration;
 

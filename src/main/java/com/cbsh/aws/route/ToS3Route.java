@@ -8,12 +8,12 @@ import org.apache.camel.component.aws.s3.S3Constants;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FileToS3Route extends RouteBuilder {
+public class ToS3Route extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		from("direct-vm:sendToS3")
 			.convertBodyTo(byte[].class)
-			.log("sending toApi")
+			.log("Sending to S3")
 //	    	.setHeader(S3Constants.CONTENT_LENGTH, simple("${body.length}"))
 	    	.setHeader(S3Constants.KEY, method(this, "getFileName"))
         	.multicast().parallelProcessing(true)

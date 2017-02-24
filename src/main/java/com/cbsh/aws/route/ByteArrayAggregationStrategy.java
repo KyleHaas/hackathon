@@ -1,15 +1,11 @@
 package com.cbsh.aws.route;
 
-import java.io.ByteArrayInputStream;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.component.aws.s3.S3Constants;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
-
-import com.amazonaws.services.s3.AmazonS3Client;
 
 public class ByteArrayAggregationStrategy implements AggregationStrategy {
 
